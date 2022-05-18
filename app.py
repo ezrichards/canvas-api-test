@@ -1,4 +1,5 @@
 import os
+
 from canvasapi import Canvas
 from datetime import datetime
 from dateutil.parser import isoparse
@@ -28,7 +29,6 @@ load_dotenv()
 
 canvas = Canvas(os.getenv("API_URL"), os.getenv("API_KEY"))
 user = canvas.get_user(26508)
-# course = canvas.get_course('36822')
 
 print("ALL COURSES:\n")
 for course in filter_courses(user.get_courses()):
@@ -54,7 +54,7 @@ for i in range(0, size):
 
 print("\nASSIGNMENTS:\n")
 for assignment in course.get_assignments():
-    now = datetime(2021, 8, 26, 0, 0) # example date
+    now = datetime(2021, 8, 26, 0, 0)
     # now = datetime.now()
 
     due_at = assignment.__getattribute__("due_at")
